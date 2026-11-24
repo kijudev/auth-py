@@ -23,7 +23,7 @@ UserEmail = Annotated[EmailStr, AfterValidator(str.lower)]
 
 
 class User(SQLModel, table=True):
-    __tablename__ = "users"
+    __tablename__ = "users"  # type: ignore
 
     id: UUID = UUID4PrimaryField()
     name: UserName
@@ -63,7 +63,7 @@ class UserPublic(SQLModel):
 
 
 class UserSession(SQLModel, table=True):
-    __tablename__ = "user_sessions"
+    __tablename__ = "user_sessions"  # type: ignore
 
     token_hash: TokenHash = Field(
         primary_key=True, sa_type=AutoString(length=64)
